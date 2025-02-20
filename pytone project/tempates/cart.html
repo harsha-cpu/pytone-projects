@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for product_id, quantity in cart.items() %}
+            <li>
+                {{ products[product_id].name }} - Quantity: {{ quantity }} 
+                <a href="{{ url_for('remove_from_cart', product_id=product_id) }}">Remove</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+</head>
+<body>
+    <h1>Manage Products</h1>
+    {% for product_id, product in products.items() %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>Price: ${{ product.price }}</p>
+            <a href="{{ url_for('edit_product', product_id=product_id) }}">Edit</a>
+        </div>
+    {% endfor %}
+</body>
+</html>

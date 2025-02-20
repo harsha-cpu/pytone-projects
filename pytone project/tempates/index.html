@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ecommerce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Our Store</h1>
+    <ul>
+        {% for id, product in products.items() %}
+            <li>
+                <a href="{{ url_for('single_product_view', product_id=id) }}">{{ product.name }}</a> - ${{ product.price }}
+                <button class="add-to-cart" data-id="{{ id }}">Add to Cart</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('cart') }}">View Cart (<span id="cart-count">0</span>)</a>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
