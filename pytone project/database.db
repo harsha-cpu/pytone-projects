@@ -1,0 +1,24 @@
+import sqlite3
+
+conn = sqlite3.connect('database.db')
+cursor = conn.cursor()
+
+# Create the products table
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    image TEXT NOT NULL
+)
+''')
+
+# Insert some sample data (optional)
+cursor.execute("INSERT INTO products (name, price, image) VALUES ('Laptop', 1000, 'laptop.jpg')")
+cursor.execute("INSERT INTO products (name, price, image) VALUES ('Phone', 500, 'phone.jpg')")
+cursor.execute("INSERT INTO products (name, price, image) VALUES ('Headphones', 100, 'headphones.jpg')")
+
+conn.commit()
+conn.close()
+
+print("Database initialized successfully.")
